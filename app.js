@@ -7,6 +7,9 @@ var hbs = require('express-handlebars');
 
 //require routes
 var routes = require('./routes/index');
+var data = require('./routes/data.js');
+var update = require('./routes/update.js');
+var deleteRoute = require('./routes/delete.js');
 
 var app = express();
 
@@ -23,6 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //apply the routes to our app
 app.use('/', routes);
+app.use('/data', data);
+app.use('/update', update);
+app.use('/delete', deleteRoute);
 
 // development error handler
 // will print stacktrace
@@ -35,7 +41,6 @@ if (app.get('env') === 'development') {
     });
   });
 }
-
 
 var port = 3000;
 app.listen(port, function(){

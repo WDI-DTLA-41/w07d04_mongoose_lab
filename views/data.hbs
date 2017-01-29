@@ -1,0 +1,19 @@
+<h1>UserData -- All</h1>
+    <section>
+    {{#each items}}
+        <h3>{{_id}}</h3>
+        <ul data-id="{{_id}}">
+            <li>{{title}}</li>
+            <li>{{content}}</li>
+            <li>{{author}}</li>
+        </ul>
+        <h4>Update {{title}} Data</h4>
+        <form action="/update" method="POST">
+            <input type="hidden" value="{{_id}}" name="id">
+            <input type="text" placeholder="Update Content" name="content" required><br><br>
+            <input type="text" placeholder="Update Author" name="author" required><br>
+            <button type="submit">Update</button>
+        </form>
+    {{/each}}
+
+    </section>
