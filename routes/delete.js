@@ -6,6 +6,15 @@ var mongoose = require('mongoose');
 
 var UserData = require('../models/user.js');
 
-// router.post('/', )
+router.delete('/', (req, res, next) => {
+  var id = req.body.id;
+  UserData.remove(
+    {_id: id},
+    (err, result) => {
+      console.log(result);
+    },
+    res.redirect('/data')
+  )
+})
 
 module.exports = router;

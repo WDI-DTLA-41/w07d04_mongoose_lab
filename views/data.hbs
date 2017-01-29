@@ -6,13 +6,31 @@
             <li>{{title}}</li>
             <li>{{content}}</li>
             <li>{{author}}</li>
+            <h3>Comments</h3>
+            <ul>
+            {{#each comments}}
+                <li>{{content}}</li>
+            {{/each}}
+            </ul>
         </ul>
-        <h4>Update {{title}} Data</h4>
+        <h3>Post Comment</h3>
+        <form action="/comments/{{_id}}" method="POST">
+            <input type="text" placeholder="Add a Comment" name="comment">
+            <button type="submit">Post</button>
+        </form>
+        <form action="/comments/view/{{_id}}" method="POST">
+            <button>View All Comments</button>
+        </form>
+        <h3>Update {{title}} Data</h3>
         <form action="/update" method="POST">
             <input type="hidden" value="{{_id}}" name="id">
             <input type="text" placeholder="Update Content" name="content" required><br><br>
             <input type="text" placeholder="Update Author" name="author" required><br>
             <button type="submit">Update</button>
+        </form>
+        <form action="/delete?_method=DELETE" method="POST">
+            <input type="hidden" value="{{_id}}" name="id">
+            <button type="submit">Delete</button>
         </form>
     {{/each}}
 
