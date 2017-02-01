@@ -17,28 +17,3 @@
         <button type="submit">INSERT</button>
     </form>
 </section>
-<section class="get">
-    <h3>Get Data</h3>
-    <form id="get-data" method="get">
-        <div class="input">
-            <label for="title">Title</label>
-            <input class="block" type="data" name="Title" value="{{item.title}}"></input>
-        </div>
-    <button type="viewData">Get Data</button>
-    </form>
-    <hr>
-    <div class="displayData">
-{{!--         {{# each items}} --}}
-            <article>
-            <a href="/index/{{_items}}">Update</a>
-                <ol>
-                    <li>Title: {{ this.title }}</li>
-                    <li>Content: {{ this.content }}</li>
-                    <li>Author: {{ this.author }}</li>
-                </ol>
-            </article>
-{{!--         {{ /each}} }} --}}
-    </div>
-
-
-</section>
