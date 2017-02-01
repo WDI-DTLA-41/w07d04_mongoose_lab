@@ -1,21 +1,16 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-mongoose.connect('localhost:27017/test');
-var Schema = mongoose.Schema;
+mongoose.connect('localhost:27017/w7d4crudlab');
 
-var userDataSchema = new Schema({
-  title: {type: String, required: true},
-  content: String,
-  author: String
-}, {collection: 'userdata'});
+mongoose.Promise = global.Promise;
 
-var UserData = mongoose.model('UserData', userDataSchema);
+var UserData = require('../models/user.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index');
-});
+})
 
 router.post('/insert', function(req, res, next) {
   var item = {
@@ -29,5 +24,8 @@ router.post('/insert', function(req, res, next) {
 
   res.redirect('/');
 });
+
+// /comments - gets all the comments for a specific entry
+// /comments/:addcomment - adds a comment to a specific entry
 
 module.exports = router;
